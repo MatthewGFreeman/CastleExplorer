@@ -3,17 +3,41 @@
  */
 package Castle.Explorer;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+// import org.apache.logging.log4j.Logger;
 
 public class App {
     static ArrayList<String> bag = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     static Player playerOne = new Player(null, bag);
     public static void main(String[] args) {
-        playerOne.greeting();
-        playerOne.name = sc.nextLine();
-        System.out.println("\tHello " + playerOne.name + "!");
-        playerOne.playGame(playerOne.bag, sc);
+        //Start of connection to DB
+        // Logger log = org.appache.logging.log4j.LogManager.getLogger(App.class.getName());
+        String url = "jdbc:postgresql://localhost:5432/castle";
+        String username = "castle";
+        String password = "p4ssw0rd";
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+            FurnitureDao fDao = new FurnitureDao(connection);
+
+            List<Furniture> list = fDao.getAll();
+            list.forEach(str -> System.out.println(str.name));
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        //Start of application
+        // playerOne.greeting();
+        // playerOne.name = sc.nextLine();
+        // System.out.println("\tHello " + playerOne.name + "!");
+        // playerOne.playGame(playerOne.bag, sc);
     }
 }
