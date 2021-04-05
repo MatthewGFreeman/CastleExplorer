@@ -10,9 +10,15 @@ import java.util.List;
 public class CollecitbleDao implements Dao<Collectible> {
     Connection connection;
     @Override
-    public void insert(Collectible e) {
-        // TODO Auto-generated method stub
-        
+    public void insert(Collectible collectible) {
+        try {
+            PreparedStatement pStatement = connection.prepareStatement("insert into furniture(furnitureName) values (?)");
+            pStatement.setString(1, collectible.getName());
+            pStatement.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -22,7 +28,7 @@ public class CollecitbleDao implements Dao<Collectible> {
             PreparedStatement pStatement = connection.prepareStatement("select * from collectible");
             ResultSet rSet = pStatement.executeQuery();
             while (rSet.next()) {
-                Collectible temp = new Collectible(rSet.getString("name"));
+                Collectible temp = new Collectible(rSet.getString("collectibleName"));
                 list.add(temp);
             }
         } catch (SQLException e) {

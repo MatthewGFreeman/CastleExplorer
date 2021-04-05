@@ -10,8 +10,15 @@ import java.util.List;
 public class FurnitureDao implements Dao<Furniture> {
     Connection connection;
     @Override
-    public void insert(Furniture e) {
-        // TODO Auto-generated method stub
+    public void insert(Furniture furniture) {
+        try {
+            PreparedStatement pStatement = connection.prepareStatement("insert into furniture(furnitureName) values (?)");
+            pStatement.setString(1, furniture.getName());
+            pStatement.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
     }
 
@@ -22,7 +29,7 @@ public class FurnitureDao implements Dao<Furniture> {
             PreparedStatement pStatement = connection.prepareStatement("select * from furniture");
             ResultSet rSet = pStatement.executeQuery();
             while(rSet.next()) {
-                Furniture temp = new Furniture(rSet.getString("name"));
+                Furniture temp = new Furniture(rSet.getString("furnitureName"));
                 list.add(temp);
             }
         } catch (SQLException e) {
