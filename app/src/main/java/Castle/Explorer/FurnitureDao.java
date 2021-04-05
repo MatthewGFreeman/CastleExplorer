@@ -1,9 +1,14 @@
 package Castle.Explorer;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FurnitureDao implements Dao<Furniture> {
-
+    Connection connection;
     @Override
     public void insert(Furniture e) {
         // TODO Auto-generated method stub
@@ -12,8 +17,19 @@ public class FurnitureDao implements Dao<Furniture> {
 
     @Override
     public List<Furniture> getAll() {
-        // TODO Auto-generated method stub
-        return null;
+        List<Furniture> list = new ArrayList<>();
+        try {
+            PreparedStatement pStatement = connection.prepareStatement("select * from furniture");
+            ResultSet rSet = pStatement.executeQuery();
+            while(rSet.next()) {
+                Furniture temp = new Furniture(rSet.getString("name"));
+                list.add(temp);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return list;
     }
 
     @Override
@@ -26,6 +42,13 @@ public class FurnitureDao implements Dao<Furniture> {
     public void delete(Furniture e) {
         // TODO Auto-generated method stub
         
+    }
+
+    /**
+     * @param connection
+     */
+    public FurnitureDao(Connection connection) {
+        this.connection = connection;
     }
     
 }
