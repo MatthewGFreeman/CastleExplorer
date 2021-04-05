@@ -2,7 +2,7 @@ package Castle.Explorer;
 
 import java.util.List;
 
-public class FurnishingsDao implements Dao<Furniture> {
+public class FurnitureDao implements Dao<Furniture> {
 
     @Override
     public void insert(Furniture e) {

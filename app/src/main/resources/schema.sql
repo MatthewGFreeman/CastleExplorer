@@ -1,15 +1,28 @@
-CREATE TABLE collectibles (
+CREATE TABLE collectible (
     ID SERIAL PRIMARY KEY,
-    prettyThing varchar(25)
+    collectibleName varchar(25)
 );
 
-CREATE TABLE furnishings (
+CREATE TABLE furniture (
     ID SERIAL PRIMARY KEY,
     furnitureName varchar(25)
 );
 
-CREATE TABLE players (
-    ID SERIAL PRIMARY KEY,
-    playerName varchar(35);
-    score INT
-);
+-- CREATE TABLE players (
+--     ID SERIAL PRIMARY KEY,
+--     playerName varchar(35);
+--     score INT
+-- );
+
+-- Creating collectible items
+INSERT INTO collectible (collectibleName) VALUES ('Gem');
+INSERT INTO collectible (collectibleName) VALUES ('Ring');
+INSERT INTO collectible (collectibleName) VALUES ('Necklace');
+
+-- Creating furniture items
+INSERT INTO furniture (furnitureName) VALUES ('Locker');
+INSERT INTO furniture (furnitureName) VALUES ('Dresser');
+INSERT INTO furniture (furnitureName) VALUES ('Bookcase');
+INSERT INTO furniture (furnitureName) VALUES ('Chair');
+INSERT INTO furniture (furnitureName) VALUES ('Chest');
+
