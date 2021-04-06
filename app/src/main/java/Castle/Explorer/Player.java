@@ -102,14 +102,25 @@ public class Player {
     }
     private void playerChoice(String choice, ArrayList<String> pack, Furniture pieceOfFurniture, Scanner sc) {
         //Implement another connection and build this list
-        Collectible gem = new Collectible("Gem");
-        Collectible ring = new Collectible("Ring");
-        Collectible necklace = new Collectible("Necklace");
-        Collectible[] collectibles = {gem, ring, necklace};
+        // Logger log = org.appache.logging.log4j.LogManager.getLogger(App.class.getName());
+        String url = "jdbc:postgresql://localhost:5432/castle";
+        String username = "castle";
+        String password = "p4ssw0rd";
+        List<Collectible> collectibles = new ArrayList<Collectible>();
+
+        try {
+            Connection connection = DriverManager.getConnection(url, username, password);
+            CollecitbleDao cDao = new CollecitbleDao(connection);
+            
+            collectibles = cDao.getAll();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         if(choice.equals("1")) {
             if(pieceOfFurniture.hasCollectible()) {
-                Collectible foundItem = collectibles[randomNumber.nextInt(collectibles.length)];
+                Collectible foundItem = collectibles.get(randomNumber.nextInt(collectibles.size()));
                 System.out.println("\tYou found a " + foundItem.name + "!");
                 System.out.println("\tWhat would you like to do?");
                 System.out.println("\t1. Put the " + foundItem.name + " in my bag.");
