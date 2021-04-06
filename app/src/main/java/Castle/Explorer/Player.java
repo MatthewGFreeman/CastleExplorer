@@ -55,6 +55,7 @@ public class Player {
     public void playGame(ArrayList<String> pack, Scanner sc) {
         boolean playing = true;
         while(playing) {
+            //Implement connection and build list here
             Furniture chest = new Furniture("Chest");
             Furniture bookcase = new Furniture("Bookcase");
             Furniture chair = new Furniture("Chair");
@@ -80,6 +81,7 @@ public class Player {
         }
     }
     private void playerChoice(String choice, ArrayList<String> pack, Furniture pieceOfFurniture, Scanner sc) {
+        //Implement another connection and build this list
         Collectible gem = new Collectible("Gem");
         Collectible ring = new Collectible("Ring");
         Collectible necklace = new Collectible("Necklace");
