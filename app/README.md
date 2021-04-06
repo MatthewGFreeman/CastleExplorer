@@ -9,7 +9,12 @@ A command line game where a player explores a castle, searches furniture, and co
 - [x] Reads data from SQL database
     - [x] Utlizes Docker
     - [x] Converts data from database to class types
-- [ ] Utilize Junit Jupiter for testing
+- [ ] Writes data to SQL database
+    - [x] Inserts items into database
+    - [ ] Saves user information
+        - [ ] Writes user name to database
+        - [ ] Saves a score for a user to database 
+- [ ] Utilize JUnit Jupiter for testing
 
 ## How to Play
 
