@@ -1,6 +1,8 @@
 # Castle Explorer
 
 A command line game where a player explores a castle, searches furniture, and collects items.
+Explore the castle and find furniture items.
+Search the furniture items and fill your bag with 3 collectible items to win.
 
 ## Features
 - [x] Accepts user input
