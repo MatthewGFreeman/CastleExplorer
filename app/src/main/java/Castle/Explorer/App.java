@@ -3,11 +3,7 @@
  */
 package Castle.Explorer;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 // import org.apache.logging.log4j.Logger;
@@ -17,28 +13,6 @@ public class App {
     static Scanner sc = new Scanner(System.in);
     static Player playerOne = new Player(null, bag);
     public static void main(String[] args) {
-        //Start of connection to DB
-        // Logger log = org.appache.logging.log4j.LogManager.getLogger(App.class.getName());
-        // String url = "jdbc:postgresql://localhost:5432/castle";
-        // String username = "castle";
-        // String password = "p4ssw0rd";
-
-        // try {
-        //     Connection connection = DriverManager.getConnection(url, username, password);
-        //     FurnitureDao fDao = new FurnitureDao(connection);
-
-        //     List<Furniture> list = fDao.getAll();
-        //     System.out.println("For each loop: ");
-        //     list.forEach(str -> System.out.println(str.name));
-        //     System.out.println("For loop: ");
-        //     for(int i = 0; i < list.size(); i++) {
-        //         System.out.println(list.get(i).name);
-        //     }
-        // } catch (SQLException e) {
-        //     // TODO Auto-generated catch block
-        //     e.printStackTrace();
-        // }
-
         //Start of application
         playerOne.greeting();
         playerOne.name = sc.nextLine();
