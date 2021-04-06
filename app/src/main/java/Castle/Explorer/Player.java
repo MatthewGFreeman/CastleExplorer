@@ -110,7 +110,7 @@ public class Player {
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
-            CollecitbleDao cDao = new CollecitbleDao(connection);
+            CollectibleDao cDao = new CollectibleDao(connection);
             
             collectibles = cDao.getAll();
         } catch (SQLException e) {

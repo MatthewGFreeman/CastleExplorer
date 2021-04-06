@@ -16,14 +16,14 @@ Search the furniture items and fill your bag with 3 collectible items to win.
     - [ ] Saves user information
         - [ ] Writes user name to database
         - [ ] Saves a score for a user to database 
-- [ ] Utilize JUnit Jupiter for testing
+- [x] Utilize JUnit Jupiter for testing
 
 ## How to Play
 
 Database: Run and Load data in Docker environment and Access data
 ```bash
 # In resources folder:
-docker build -t castle
+docker build -t castle .
 
 # In another prompt:
 docker run -d -e POSTGRES_PASSWORD=p4ssw0rd -p 5432:5432 castle

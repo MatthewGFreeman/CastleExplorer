@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CollecitbleDao implements Dao<Collectible> {
+public class CollectibleDao implements Dao<Collectible> {
     Connection connection;
     @Override
     public void insert(Collectible collectible) {
@@ -53,7 +53,7 @@ public class CollecitbleDao implements Dao<Collectible> {
     /**
      * @param connection
      */
-    public CollecitbleDao(Connection connection) {
+    public CollectibleDao(Connection connection) {
         this.connection = connection;
     }
     
