@@ -19,25 +19,30 @@ public class App {
     public static void main(String[] args) {
         //Start of connection to DB
         // Logger log = org.appache.logging.log4j.LogManager.getLogger(App.class.getName());
-        String url = "jdbc:postgresql://localhost:5432/castle";
-        String username = "castle";
-        String password = "p4ssw0rd";
+        // String url = "jdbc:postgresql://localhost:5432/castle";
+        // String username = "castle";
+        // String password = "p4ssw0rd";
 
-        try {
-            Connection connection = DriverManager.getConnection(url, username, password);
-            FurnitureDao fDao = new FurnitureDao(connection);
+        // try {
+        //     Connection connection = DriverManager.getConnection(url, username, password);
+        //     FurnitureDao fDao = new FurnitureDao(connection);
 
-            List<Furniture> list = fDao.getAll();
-            list.forEach(str -> System.out.println(str.name));
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        //     List<Furniture> list = fDao.getAll();
+        //     System.out.println("For each loop: ");
+        //     list.forEach(str -> System.out.println(str.name));
+        //     System.out.println("For loop: ");
+        //     for(int i = 0; i < list.size(); i++) {
+        //         System.out.println(list.get(i).name);
+        //     }
+        // } catch (SQLException e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
 
         //Start of application
-        // playerOne.greeting();
-        // playerOne.name = sc.nextLine();
-        // System.out.println("\tHello " + playerOne.name + "!");
-        // playerOne.playGame(playerOne.bag, sc);
+        playerOne.greeting();
+        playerOne.name = sc.nextLine();
+        System.out.println("\tHello " + playerOne.name + "!");
+        playerOne.playGame(playerOne.bag, sc);
     }
 }

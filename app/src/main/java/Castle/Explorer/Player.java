@@ -1,6 +1,10 @@
 package Castle.Explorer;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -56,15 +60,31 @@ public class Player {
         boolean playing = true;
         while(playing) {
             //Implement connection and build list here
-            Furniture chest = new Furniture("Chest");
-            Furniture bookcase = new Furniture("Bookcase");
-            Furniture chair = new Furniture("Chair");
-            Furniture locker = new Furniture("Locker");
-            Furniture[] furniture = {chest, bookcase, chair, locker};
+            // Furniture chest = new Furniture("Chest");
+            // Furniture bookcase = new Furniture("Bookcase");
+            // Furniture chair = new Furniture("Chair");
+            // Furniture locker = new Furniture("Locker");
+            List<Furniture> furniture = new ArrayList<Furniture>();
+
+            //Start of connection to DB
+            // Logger log = org.appache.logging.log4j.LogManager.getLogger(App.class.getName());
+            String url = "jdbc:postgresql://localhost:5432/castle";
+            String username = "castle";
+            String password = "p4ssw0rd";
+            
+            try {
+                Connection connection = DriverManager.getConnection(url, username, password);
+                FurnitureDao fDao = new FurnitureDao(connection);
+                
+                furniture = fDao.getAll();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             while(pack.size() < 3){
                 System.out.println("-------------------------------------------------------------------");
     
-                Furniture searchableItem = furniture[randomNumber.nextInt(furniture.length)];
+                Furniture searchableItem = furniture.get(randomNumber.nextInt(furniture.size()));
                 System.out.println("\t# You find a " + searchableItem.name + "! \n");
                 System.out.println("\n\tWhat would you like to do?");
                 System.out.println("\t1. Search " + searchableItem.name + ".");
