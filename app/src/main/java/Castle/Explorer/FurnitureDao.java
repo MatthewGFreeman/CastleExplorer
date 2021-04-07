@@ -16,7 +16,6 @@ public class FurnitureDao implements Dao<Furniture> {
             pStatement.setString(1, furniture.getName());
             pStatement.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         

@@ -6,14 +6,11 @@ package Castle.Explorer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// import org.apache.logging.log4j.Logger;
-
 public class App {
     static ArrayList<String> bag = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
     static Player playerOne = new Player(null, bag);
     public static void main(String[] args) {
-        //Start of application
         playerOne.greeting();
         playerOne.name = sc.nextLine();
         System.out.println("\tHello " + playerOne.name + "!");

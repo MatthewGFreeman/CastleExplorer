@@ -16,7 +16,6 @@ public class CollectibleDao implements Dao<Collectible> {
             pStatement.setString(1, collectible.getName());
             pStatement.executeUpdate();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -32,7 +31,6 @@ public class CollectibleDao implements Dao<Collectible> {
                 list.add(temp);
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return list;

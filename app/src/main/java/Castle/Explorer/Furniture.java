@@ -25,6 +25,9 @@ public class Furniture {
         this.name = name;
     }
 
+    /**
+     * @return boolean for chance of collectible item
+     */
     public boolean hasCollectible() {
         int chance = 66;
         Random randomNumber = new Random();

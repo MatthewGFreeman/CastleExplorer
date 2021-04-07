@@ -59,15 +59,9 @@ public class Player {
     public void playGame(ArrayList<String> pack, Scanner sc) {
         boolean playing = true;
         while(playing) {
-            //Implement connection and build list here
-            // Furniture chest = new Furniture("Chest");
-            // Furniture bookcase = new Furniture("Bookcase");
-            // Furniture chair = new Furniture("Chair");
-            // Furniture locker = new Furniture("Locker");
             List<Furniture> furniture = new ArrayList<Furniture>();
 
             //Start of connection to DB
-            // Logger log = org.appache.logging.log4j.LogManager.getLogger(App.class.getName());
             String url = "jdbc:postgresql://localhost:5432/castle";
             String username = "castle";
             String password = "p4ssw0rd";
@@ -78,7 +72,6 @@ public class Player {
                 
                 furniture = fDao.getAll();
             } catch (SQLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             while(pack.size() < 3){
@@ -94,15 +87,14 @@ public class Player {
                 
                 playerChoice(input, pack, searchableItem, sc);
             }
-            System.out.println("###################################################################");
+            System.out.println("\n###################################################################");
             System.out.println("################     Thanks for playing!     ######################");
             System.out.println("###################################################################");
             playing = false;
         }
     }
     private void playerChoice(String choice, ArrayList<String> pack, Furniture pieceOfFurniture, Scanner sc) {
-        //Implement another connection and build this list
-        // Logger log = org.appache.logging.log4j.LogManager.getLogger(App.class.getName());
+        //Start of connection to db
         String url = "jdbc:postgresql://localhost:5432/castle";
         String username = "castle";
         String password = "p4ssw0rd";
@@ -114,7 +106,6 @@ public class Player {
             
             collectibles = cDao.getAll();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -128,7 +119,12 @@ public class Player {
                 String nextChoice = sc.nextLine();
 
                 while(!nextChoice.equals("1") && !nextChoice.equals("2")) {
-                    System.out.println("Invalid command!");
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("###################################################################");
+                    System.out.println("Well, you couldn't possibly do that.");
+                    System.out.println("###################################################################");
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("Please select 1 or 2 to continue.");
                     System.out.println("\tWhat would you like to do?");
                     System.out.println("\t1. Put the item in my bag.");
                     System.out.println("\t2. Leave it where it is.");
@@ -136,26 +132,47 @@ public class Player {
                 }
                 if(nextChoice.equals("1")) {
                     pack.add(foundItem.name);
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("###################################################################");
                     System.out.println("You put the " + foundItem.name + " in your bag!");
                     System.out.println("You now have " + pack.size() + " item(s) in your bag.");
                     System.out.println("You need " + (3 - pack.size()) + " more item(s) to win!");
+                    System.out.println("###################################################################");
                 } else {
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println("###################################################################");
                     System.out.println("You leave the " + foundItem.name + " alone.");
                     System.out.println("You have " + pack.size() + " item(s) in your bag.");
                     System.out.println("You need " + (3 - pack.size()) + " more item(s) to win!");
+                    System.out.println("###################################################################");
                 }
             } else {
+                System.out.println("-------------------------------------------------------------------");
+                System.out.println("###################################################################");
                 System.out.println("The " + pieceOfFurniture.name + " was empty!");
+                System.out.println("###################################################################");
+                System.out.println("-------------------------------------------------------------------");
             }
         } else if(choice.equals("2")){
+            System.out.println("###################################################################");
             System.out.println("You leave the " + pieceOfFurniture.name + " alone and keep searching.");
+            System.out.println("###################################################################");
+            System.out.println("-------------------------------------------------------------------");
         } else if(choice.equals("3")) {
+            System.out.println("-------------------------------------------------------------------");
+            System.out.println("###################################################################");
             System.out.println("You decide to leave the castle without filling your bag.");
+            System.out.println("###################################################################");
+            System.out.println("-------------------------------------------------------------------\n");
+
             pack.add(" ");
             pack.add(" ");
             pack.add(" ");
         } else {
-            System.out.println("Invlaid command!");
+            System.out.println("-------------------------------------------------------------------");
+            System.out.println("###################################################################");
+            System.out.println("You can't do that! You leave the " + pieceOfFurniture.name + " alone");
+            System.out.println("###################################################################");
         }
     }
     

@@ -8,12 +8,6 @@ CREATE TABLE furniture (
     furnitureName varchar(25)
 );
 
--- CREATE TABLE players (
---     ID SERIAL PRIMARY KEY,
---     playerName varchar(35);
---     score INT
--- );
-
 -- Creating collectible items
 INSERT INTO collectible (collectibleName) VALUES ('Gem');
 INSERT INTO collectible (collectibleName) VALUES ('Ring');
