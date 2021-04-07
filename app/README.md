@@ -53,7 +53,7 @@ gradle test
 ./gradlew run
 ```
 
-# Issues
+## Issues
 
 If you run into any issues, have comments, or ideas for future development, plese submit a pull request.
 A link on how to submit a pull request on GitHub is provided below.
